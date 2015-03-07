@@ -1,0 +1,14 @@
+g:vim_opendialogue_choose_file_filename	opendialogue.txt	/*g:vim_opendialogue_choose_file_filename*
+g:vim_opendialogue_default_open_mode	opendialogue.txt	/*g:vim_opendialogue_default_open_mode*
+g:vim_opendialogue_default_open_mode_first	opendialogue.txt	/*g:vim_opendialogue_default_open_mode_first*
+g:vim_opendialogue_filemanager_command	opendialogue.txt	/*g:vim_opendialogue_filemanager_command*
+g:vim_opendialogue_launch_terminal	opendialogue.txt	/*g:vim_opendialogue_launch_terminal*
+g:vim_opendialogue_launch_terminal_name	opendialogue.txt	/*g:vim_opendialogue_launch_terminal_name*
+g:vim_opendialogue_startup_directory_mode	opendialogue.txt	/*g:vim_opendialogue_startup_directory_mode*
+vim-opendialogue	opendialogue.txt	/*vim-opendialogue*
+vim-opendialogue-about	opendialogue.txt	/*vim-opendialogue-about*
+vim-opendialogue-changes	opendialogue.txt	/*vim-opendialogue-changes*
+vim-opendialogue-configure	opendialogue.txt	/*vim-opendialogue-configure*
+vim-opendialogue-contents	opendialogue.txt	/*vim-opendialogue-contents*
+vim-opendialogue-fmdialogue	opendialogue.txt	/*vim-opendialogue-fmdialogue*
+

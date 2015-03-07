@@ -1,0 +1,149 @@
+*vim-opendialogue.txt*	For Vim version 7.3 and above	Last change: 2015 Mar 06
+
+			>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<
+			>>>>>>> vim-opendialogue <<<<<<<
+			>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<
+
+Author:  Daniel Opitz
+
+==============================================================================
+				*vim-opendialogue* *vim-opendialogue-contents*
+1. Contents~
+
+	1. Contents ...........................: |vim-opendialogue-contents|
+	2. About ..............................: |vim-opendialogue-about|
+	3. Configuration ......................: |vim-opendialogue-configure|
+	4. FMDialogue .........................: |vim-opendialogue-fmdialogue|
+        A. Change History .....................: |vim-opendialogue-changes|
+
+==============================================================================
+						*vim-opendialogue-about*
+2. About~
+
+This plugin was created to launch a (cli) filemanager for browsing files and
+opening them from directly within vim.
+
+The code for the plugin is based on hut's (dev of ranger) implementation of to
+choose a file with ranger from within vim. See his implementation 
+"github.com/hut/ranger/blob/master/doc/examples/vim_file_chooser.vim".
+
+I gradually modified and extended this plugin, so that it would work with gvim 
+and other filemanagers than ranger (although I'm using ranger extensivley and 
+I would recommend it to anyone). 
+
+Invoking the FMDialogue command opens the filemanager of your coice and opens 
+the selected files, see |vim-opendialogue-fmdialogue| for further reading.
+
+Note: 
+When using gvim you will have to enable the >
+	g:vim-opendialogue-launch-terminal
+<option since a cli filmanager cannot be fired up in gvim.
+
+
+==============================================================================
+						*vim-opendialogue-configure*
+3. Configuration~
+
+The |g:disable_vim_opendialogue| option disables the plugin.
+
+
+					*g:vim_opendialogue_launch_ternimal*				
+3.1 Launch terminal flag~
+
+The |g:vim_opendialogue_launch_ternimal| option determines, if the filemanager
+should be launched in the terminal where vim is running, or if a new terminal
+window sould be launched. >
+	let g:vim_opendialogue_launch_terminal = 0
+Values other than 0 will cause a new terminal to be launched where the
+filemanager is fired up.
+Note for users of gvim: This option needs to be set, because gvim can't
+execute the filemanager otherwise.
+
+
+				*g:vim_opendialogue_launch_ternimal_name*				
+3.1 Launch terminal command~
+
+The |g:vim_opendialogue_launch_ternimal_name| lets you choose the terminal
+that is launched then the |g:vim_opendialogue_launch_terminal| option is set. >
+	let g:vim_opendialogue_launch_terminal_name = "gnome-terminal -x"
+Note, that the -x option is set to that the filemanager can be
+executed right after the terminal starts up.
+
+
+				*g:vim_opendialogue_filemanager_command*
+3.2 Filemanager command~
+
+The |g:vim_opendialogue_filemanager_command| lets you choose the filemanager,
+that is invoked. >
+	let g:vim_opendialogue_filemanager_command = "ranger --choosefiles="
+The command has to define the last option as a choosefile, where a filename
+can be specified that contains all files that have been chose in the
+filemanager dialog.
+
+
+				*g:vim_opendialogue_choose_file_filename*
+3.3. Choosefile~
+
+The |g:vim_opendialogue_choose_file_filename| lets you define a FULL PATH to
+the file, that is used to save the names of the selected files in the
+filemanager dialogue. >
+	let g:vim_opendialogue_choose_file_filename = /tmp/vimopendialogue_choose_file.txt
+The |g:vim_opendialogue_filemanager_command| and the 
+|g:vim_opendialogue_choose_file_filename| options are concatenated to 
+build the command that executes the filemanager.
+
+
+				*g:vim_opendialogue_startup_directory_mode*
+3.4 Directory Mode~
+
+The |g:vim_opendialogue_startup_directory_mode| option lets you choose the
+starting directory then the filemanager is fired up. >
+	let g:vim_opendialogue_startup_directory_mode = "file"
+Two options are available: 'file' uses the directory where the file is located
+that is currently under the cursor. 'cwd' uses the current working directoy of
+vim/gvim.
+
+
+				*g:vim_opendialogue_default_open_mode_first*
+				*g:vim_opendialogue_default_open_mode*
+3.5 Open Mode~
+
+The two options |g:vim_opendialogue_default_open_mode_first| and 
+|g:vim_opendialogue_default_open_mode_first| modify the default behaviour, 
+where new files are opend. There are multiple options availabe: 
+'h' opens the file in the current window. 't' opens in a new tab, 
+'v' in a new vertical split and 's' in a new horizontal split. 
+Capital variant will open all files that have been selected in the 
+dialogue with the respective mode. >
+	let g:vim_opendialogue_default_open_mode_first = 'h'
+	let g:vim_opendialogue_default_open_mode = 't'
+The default configuration default-opens the first file in the current window 
+and all other windows in a new tab. The user is asked for every file again. 
+
+Examlple: >
+	let g:vim_opendialogue_default_open_mode_first = 'h'
+	let g:vim_opendialogue_default_open_mode = 'T'
+This configuration would default-open the first file in the current window and
+oll other windows in a new tab. Although the user is asked to confirm only for
+the first two files.
+
+
+						*vim-opendialogue-fmdialogue*
+4. FMDialogue~
+
+Map this command in your .vimrc to your convenience e.g.: >
+	nnoremap <leader>o :FMDialogue
+>
+This command fires up the filemanager and initiates the process of opening
+windows.
+
+
+						*vim-opendialogue-changes*
+A. Change History~
+
+	- None -
+
+
+
+
+vim:tw=78:sts=8:ts=8:sw=8:noet:ft=help:
